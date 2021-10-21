@@ -2,6 +2,7 @@ package main;
 
 import definicoes.CaminhoSaida;
 import definicoes.Delimitador;
+import definicoes.FormatoSaida;
 import estruturaEvolucoes.EvolucoesMemory;
 import estruturaEvolucoes.EvolucoesTime;
 import exceptions.ArquivoNaoEncontradoException;
@@ -14,6 +15,7 @@ class Menu {
 	
 	Delimitador delimitador = new Delimitador();
 	CaminhoSaida saida = new CaminhoSaida();
+	FormatoSaida formato = new FormatoSaida();
 	
 	public boolean run() {
 		try {
@@ -27,8 +29,8 @@ class Menu {
 			return false;
 		}
 		
-//		delimitador.definir();
-//		System.out.println("Delimitador lido: " + delimitador.getDelimitador());
+		delimitador.definir();
+		System.out.println("Delimitador lido: " + delimitador.getDelimitador());
 		
 		try {
 			saida.definir();
@@ -38,6 +40,8 @@ class Menu {
 		}
 		System.out.println("Caminho lido: " + saida.getCaminhoSaida());
 		
+		formato.definir();
+		System.out.println("Formato escolhido: " + formato.getFormatoSaida());
 		
 		return true;
 	}
