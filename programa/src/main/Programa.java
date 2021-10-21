@@ -1,9 +1,11 @@
 package main;
 
+import definicoes.CaminhoSaida;
 import definicoes.Delimitador;
 import estruturaEvolucoes.EvolucoesMemory;
 import estruturaEvolucoes.EvolucoesTime;
 import exceptions.ArquivoNaoEncontradoException;
+import exceptions.EscritaNaoPermitidaException;
 
 class Menu {
 	EvolucoesMemory memories = new EvolucoesMemory();
@@ -11,6 +13,7 @@ class Menu {
 	LeitorArquivo leitor = new LeitorArquivo();
 	
 	Delimitador delimitador = new Delimitador();
+	CaminhoSaida saida = new CaminhoSaida();
 	
 	public boolean run() {
 		try {
@@ -24,9 +27,16 @@ class Menu {
 			return false;
 		}
 		
-		delimitador.definir();
+//		delimitador.definir();
+//		System.out.println("Delimitador lido: " + delimitador.getDelimitador());
 		
-		System.out.println("Delimitador lido: " + delimitador.getDelimitador());
+		try {
+			saida.definir();
+		} catch (EscritaNaoPermitidaException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+		System.out.println("Caminho lido: " + saida.getCaminhoSaida());
 		
 		
 		return true;

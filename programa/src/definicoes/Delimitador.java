@@ -3,6 +3,7 @@ package definicoes;
 import java.util.Scanner;
 
 import exceptions.DelimitadorInvalidoException;
+import main.Uteis;
 
 public class Delimitador {
 	private final char[] escapesLetra = {'b','f','n','r','t','\'','\"','\\'};
@@ -31,11 +32,9 @@ public class Delimitador {
 	}
 	
 	public void definir() {
-		Scanner sc=new Scanner(System.in);
 		boolean valido = false;
 		while (!valido) {
-			System.out.print("Digite o caractere delimitador: ");
-			String caractere = sc.nextLine();
+			String caractere = Uteis.Input("Digite o caractere delimitador: ");
 			try {
 				delimitador = parseChar(caractere);
 				valido = true;
@@ -44,7 +43,6 @@ public class Delimitador {
 			}
 				
 		}
-		sc.close();
 	}
 	
 	
