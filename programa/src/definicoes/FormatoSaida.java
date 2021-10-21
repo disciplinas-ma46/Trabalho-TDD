@@ -19,7 +19,7 @@ public class FormatoSaida {
 		while (true) {
 			formatoSaida = Uteis.Input("");
 			formatoSaida = formatoSaida.toUpperCase();
-			System.out.println(formatoSaida);
+			//System.out.println(formatoSaida);
 			
 			if(formatoSaida.charAt(0) == 'L') {
 				formatoSaida = "L";

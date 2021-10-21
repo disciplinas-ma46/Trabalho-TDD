@@ -53,11 +53,20 @@ class Menu {
 		
 		escritor.escreverArquivo(
 				"analysisMemory.out", 
+				memories, 
+				saida.getCaminhoSaida(), 
+				delimitador.getDelimitador(), 
+				formato.getFormatoSaida());
+		//System.out.println("Finalizado");
+		
+		escritor.escreverArquivo(
+				"analysisTime.out", 
 				times, 
 				saida.getCaminhoSaida(), 
 				delimitador.getDelimitador(), 
 				formato.getFormatoSaida());
 		System.out.println("Finalizado");
+		
 		return true;
 	}
 	
