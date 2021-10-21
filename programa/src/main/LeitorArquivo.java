@@ -32,7 +32,7 @@ class ParserDouble extends Parser{
 
 public class LeitorArquivo {
 	
-	private final String CAMINHO_PADRAO = "ide/";
+	private final String CAMINHO_PADRAO = "ide\\";
 	private Parser parser;
 	
 	public int lerArquivo(String nomeArquivo, Evolucoes evolucoes) throws ArquivoNaoEncontradoException {

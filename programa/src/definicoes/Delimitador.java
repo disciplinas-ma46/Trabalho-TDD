@@ -8,7 +8,7 @@ import main.Uteis;
 public class Delimitador {
 	private final char[] escapesLetra = {'b','f','n','r','t','\'','\"','\\'};
 	private final char[] escapes = {'\b','\f','\n','\r','\t','\'','\"','\\'};
-	private char delimitador;
+	private char delimitador = ';';
 	
 	public char getDelimitador() {
 		return delimitador;

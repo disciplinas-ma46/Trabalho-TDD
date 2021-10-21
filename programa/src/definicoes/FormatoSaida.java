@@ -5,7 +5,7 @@ import main.Uteis;
 
 public class FormatoSaida {
 	
-	private String formatoSaida;
+	private String formatoSaida = "L";
 	
 	public String getFormatoSaida() {
 		return formatoSaida;

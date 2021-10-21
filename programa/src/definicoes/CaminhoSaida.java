@@ -12,7 +12,7 @@ import main.Uteis;
 
 public class CaminhoSaida {
 	
-	private String caminhoSaida;
+	private String caminhoSaida = ".\\saida\\";
 	
 	public String getCaminhoSaida() {
 		return caminhoSaida;
@@ -24,8 +24,8 @@ public class CaminhoSaida {
 			caminhoSaida = Uteis.Input("Digite caminho da saída: ");
 			
 			if(!isValidPath(caminhoSaida)) {
-				System.out.print("tente de novo\n");
-				//throw new EscritaNaoPermitidaException("Caminho " + caminhoSaida + " não permitido");
+				System.out.print("caminhito invalido, digite outro\n");
+//				throw new EscritaNaoPermitidaException("Caminho " + caminhoSaida + " não permitido");
 			}
 			else {
 				valido = true;
@@ -33,13 +33,25 @@ public class CaminhoSaida {
 		}
 	}
 	
-	private static boolean isValidPath(String path) {
+	private boolean isValidPath(String path) {
 		// falsificação
+		caminhoSaida = ".\\" + path + "\\";
 		return true;
 //		System.out.println(path.split("\\")[0]);
-//		File f = new File(path.split("\\")[0]);
+//		File f = new File(".\\" + path + "\\placeholder.out");
 //		boolean b = f.canWrite();
-//		
+//		if(b) {
+//			caminhoSaida = ".\\" + path + "\\";
+//			return b;
+//		}
+//		File a = new File(path);
+//		b = a.canWrite();
+//		if(b) {
+//			return b;
+//		}
+//		return false;
+		
+//		if(b
 //		return f.canWrite();
 //		return Files.isWritable(path);
 //	    try {

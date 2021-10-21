@@ -32,9 +32,14 @@ public class Evolucoes {
 	}
 	
 	public Object getValor(int idxEvolucao, int idxValor) {
-		return evolucoes.get(idxEvolucao).get(idxValor);
+		try {
+			return evolucoes.get(idxEvolucao).get(idxValor);
+			
+		}
+		catch(IndexOutOfBoundsException e) {
+			return null;
+		}
 	}
-	
 	public void Show() {
 		int i = 0;
 		for(ArrayList<Object> evolucao : evolucoes) {
