@@ -1,9 +1,5 @@
 package main;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import definicoes.CaminhoSaida;
 import definicoes.Delimitador;
 import definicoes.FormatoSaida;
@@ -25,10 +21,8 @@ class Menu {
 	
 	public boolean run() {
 		try {
-			//System.out.println("lendo");
 			leitor.lerArquivo("analysisMemory.out", memories);
 			leitor.lerArquivo("analysisTime.out", times);
-			//System.out.println("lido");
 		}
 		catch(ArquivoNaoEncontradoException e) {
 			System.out.println(e.getMessage());
@@ -37,34 +31,30 @@ class Menu {
 		
 		delimitador.definir();
 		System.out.println("Delimitador lido: " + delimitador.getDelimitador());
-//		
+
 		try {
 			saida.definir();
 		} catch (EscritaNaoPermitidaException e) {
 			System.out.println(e.getMessage());
 			return false;
 		}
-		System.out.println("Caminho lido: " + saida.getCaminhoSaida());
-//		
-		formato.definir();
-		System.out.println("Formato escolhido: " + formato.getFormatoSaida());
-		
 
+		formato.definir();
 		
 		escritor.escreverArquivo(
-				"analysisMemory.out", 
+				"analysisMemoryTab.out", 
 				memories, 
 				saida.getCaminhoSaida(), 
 				delimitador.getDelimitador(), 
 				formato.getFormatoSaida());
-		//System.out.println("Finalizado");
 		
 		escritor.escreverArquivo(
-				"analysisTime.out", 
+				"analysisTimeTab.out", 
 				times, 
 				saida.getCaminhoSaida(), 
 				delimitador.getDelimitador(), 
 				formato.getFormatoSaida());
+		
 		System.out.println("Finalizado");
 		
 		return true;
@@ -73,11 +63,7 @@ class Menu {
 }
 
 public class Programa {
-	
 	public static void main(String[] args) {
-		
 		new Menu().run();
-		
 	}
-
 }
