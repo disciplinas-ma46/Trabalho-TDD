@@ -1,0 +1,11 @@
+Testes passando (50%)? 20%
+  --> Testes passam, mas não há testes que lidem com as representações em linhas
+e colunas. 
+  --> Nâo há testes que tratam exceções que podem ser lançadas. 
+
+Formatos dos arquivods (50%)? 30%
+  --> Não faz saída de arquivos. Lanca NullPointerException.
+
+Nota final: 50%
+
+Comentarios:
