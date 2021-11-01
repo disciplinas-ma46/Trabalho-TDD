@@ -35,7 +35,8 @@ public class LeitorArquivo {
 	private final String CAMINHO_PADRAO = "ide\\";
 	private Parser parser;
 	
-	public int lerArquivo(String nomeArquivo, Evolucoes evolucoes) throws ArquivoNaoEncontradoException {
+	public int lerArquivo(Evolucoes evolucoes) throws ArquivoNaoEncontradoException {
+		String nomeArquivo = evolucoes.getNomeEntrada();
 		
 		if (evolucoes.getClass() == EvolucoesMemory.class) {
 			parser = new ParserDouble();

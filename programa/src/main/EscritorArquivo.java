@@ -14,13 +14,13 @@ import exceptions.ArquivoNaoEncontradoException;
 public class EscritorArquivo {
 	
 	
-	public void escreverArquivo(String nomeArquivo, Evolucoes evolucoes, Definicoes definicoes) {
+	public void escreverArquivo(Evolucoes evolucoes, Definicoes definicoes) {
 		//definições
 		String caminhoSaida = definicoes.getCaminhoSaida();
 		char delimitador = definicoes.getDelimitador();
 		String formato = definicoes.getFormatoSaida();
 		
-		String caminhoCompleto = caminhoSaida + nomeArquivo;
+		String caminhoCompleto = caminhoSaida + evolucoes.getNomeSaida();
 		
 		//File file = new File("C:\\Users\\santo\\Documents\\projetos\\Trabalho-TDD\\programa\\saida\\analysisTimeTab.out");
 		File file = new File(caminhoCompleto);

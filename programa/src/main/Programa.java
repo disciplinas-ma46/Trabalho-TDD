@@ -19,8 +19,8 @@ class Menu {
 	
 	public boolean run() {
 		try {
-			leitor.lerArquivo("analysisMemory.out", memories);
-			leitor.lerArquivo("analysisTime.out", times);
+			leitor.lerArquivo(memories);
+			leitor.lerArquivo(times);
 		}
 		catch(ArquivoNaoEncontradoException e) {
 			System.out.println(e.getMessage());
@@ -39,15 +39,9 @@ class Menu {
 
 		definicoes.definirFormatoSaida();
 		
-		escritor.escreverArquivo(
-				"analysisMemoryTab.out", 
-				memories, 
-				definicoes);
+		escritor.escreverArquivo(memories, definicoes);
 		
-		escritor.escreverArquivo(
-				"analysisTimeTab.out", 
-				times, 
-				definicoes);
+		escritor.escreverArquivo(times, definicoes);
 		
 		System.out.println("Finalizado");
 		

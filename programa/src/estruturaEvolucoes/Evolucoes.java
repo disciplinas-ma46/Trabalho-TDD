@@ -5,6 +5,20 @@ import java.util.ArrayList;
 public class Evolucoes {
 	public final ArrayList<ArrayList<Object>> evolucoes = new ArrayList<ArrayList<Object>>();
 	
+	String nomeEntrada;
+	String nomeSaida;
+	
+	
+	public String getNomeEntrada() {
+		return nomeEntrada;
+	}
+	public void setNomeEntrada(String novoNomeEntrada) {
+		nomeEntrada = novoNomeEntrada;
+	}
+	public String getNomeSaida() {
+		return nomeSaida;
+	}
+
 	public int adicionarValor(Object valor) {
 		int tamanho = quantidadeEvolucoes();
 		if(tamanho == 0) {
