@@ -1,8 +1,7 @@
 package main;
 
-import definicoes.CaminhoSaida;
-import definicoes.Delimitador;
-import definicoes.FormatoSaida;
+import definicoes.Definicoes;
+
 import estruturaEvolucoes.EvolucoesMemory;
 import estruturaEvolucoes.EvolucoesTime;
 import exceptions.ArquivoNaoEncontradoException;
@@ -11,12 +10,11 @@ import exceptions.EscritaNaoPermitidaException;
 class Menu {
 	EvolucoesMemory memories = new EvolucoesMemory();
 	EvolucoesTime times = new EvolucoesTime();
+	
 	LeitorArquivo leitor = new LeitorArquivo();
 	EscritorArquivo escritor = new EscritorArquivo();
 	
-	Delimitador delimitador = new Delimitador();
-	CaminhoSaida saida = new CaminhoSaida();
-	FormatoSaida formato = new FormatoSaida();
+	Definicoes definicoes = new Definicoes();
 	
 	
 	public boolean run() {
@@ -29,31 +27,27 @@ class Menu {
 			return false;
 		}
 		
-		delimitador.definir();
-		System.out.println("Delimitador lido: " + delimitador.getDelimitador());
+		definicoes.definirDelimitador();
+		System.out.println("Delimitador lido: " + definicoes.getDelimitador());
 
 		try {
-			saida.definir();
+			definicoes.definirCaminhoSaida();
 		} catch (EscritaNaoPermitidaException e) {
 			System.out.println(e.getMessage());
 			return false;
 		}
 
-		formato.definir();
+		definicoes.definirFormatoSaida();
 		
 		escritor.escreverArquivo(
 				"analysisMemoryTab.out", 
 				memories, 
-				saida.getCaminhoSaida(), 
-				delimitador.getDelimitador(), 
-				formato.getFormatoSaida());
+				definicoes);
 		
 		escritor.escreverArquivo(
 				"analysisTimeTab.out", 
 				times, 
-				saida.getCaminhoSaida(), 
-				delimitador.getDelimitador(), 
-				formato.getFormatoSaida());
+				definicoes);
 		
 		System.out.println("Finalizado");
 		
@@ -64,6 +58,10 @@ class Menu {
 
 public class Programa {
 	public static void main(String[] args) {
-		new Menu().run();
+		
+		Menu menu = new Menu();
+		menu.run();
+		
 	}
 }
+

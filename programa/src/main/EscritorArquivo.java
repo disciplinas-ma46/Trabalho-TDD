@@ -1,6 +1,5 @@
 package main;
 
-
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.io.FileWriter;
@@ -8,15 +7,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner; // Import the Scanner class to read text files
 
+import definicoes.Definicoes;
 import estruturaEvolucoes.*;
 import exceptions.ArquivoNaoEncontradoException;
-	
-
 
 public class EscritorArquivo {
 	
 	
-	public void escreverArquivo(String nomeArquivo, Evolucoes evolucoes, String caminhoSaida, char delimitador, String formato) {
+	public void escreverArquivo(String nomeArquivo, Evolucoes evolucoes, Definicoes definicoes) {
+		//definições
+		String caminhoSaida = definicoes.getCaminhoSaida();
+		char delimitador = definicoes.getDelimitador();
+		String formato = definicoes.getFormatoSaida();
 		
 		String caminhoCompleto = caminhoSaida + nomeArquivo;
 		

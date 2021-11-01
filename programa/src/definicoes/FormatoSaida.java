@@ -7,11 +7,11 @@ public class FormatoSaida {
 	
 	private String formatoSaida = "L";
 	
-	public String getFormatoSaida() {
+	String getFormatoSaida() {
 		return formatoSaida;
 	}
 	
-	public void definir() {
+	void definir() {
 		boolean valido = false;
 		
 		System.out.print("Como deseja que as sequencias de tempos \npara cada evolução seja apresentada? [L] linha / [C] coluna: ");

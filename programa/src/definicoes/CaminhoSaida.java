@@ -14,11 +14,11 @@ public class CaminhoSaida {
 	
 	private String caminhoSaida = ".\\saida\\";
 	
-	public String getCaminhoSaida() {
+	String getCaminhoSaida() {
 		return caminhoSaida;
 	}
 	
-	public void definir() throws EscritaNaoPermitidaException{
+	void definir() throws EscritaNaoPermitidaException{
 		boolean valido = false;
 		while (!valido) {
 			caminhoSaida = Uteis.Input("Digite caminho da saída: ");
