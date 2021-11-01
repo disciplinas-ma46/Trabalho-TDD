@@ -1,5 +1,7 @@
 *.out
-saida
+*\saida
+.placeholder*
+*\caminho*
 
 # Compiled class file
 *.class
