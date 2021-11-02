@@ -22,14 +22,12 @@ public class EscritorArquivo {
 		
 		String caminhoCompleto = caminhoSaida + evolucoes.getNomeSaida();
 		
-		//File file = new File("C:\\Users\\santo\\Documents\\projetos\\Trabalho-TDD\\programa\\saida\\analysisTimeTab.out");
 		File file = new File(caminhoCompleto);
 		file.getParentFile().mkdirs();
 		FileWriter writer;
 		try {
 			writer = new FileWriter(file);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
@@ -40,60 +38,55 @@ public class EscritorArquivo {
 				try {
 					writer.write("" + (i+1));
 				
-				for(Object valor : evolucao) {
-					writer.write("" + delimitador + valor);
-				}
-				writer.write("\n");
-				i++;
+					for(Object valor : evolucao) {
+						writer.write("" + delimitador + valor);
+					}
+					writer.write("\n");
+					i++;
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		}
 		
 		if(formato == "C") {
-			//int i = 0;
-			int maiorQuantidadeValores = evolucoes.quantidadeValores(0);
-			
-			int qtdEvolucoes = evolucoes.quantidadeEvolucoes();
 			try {
-			for (int i=0; i<qtdEvolucoes; i++) {
-				int qtdValores = evolucoes.quantidadeValores(i);
-				if(qtdValores > maiorQuantidadeValores) {
-					maiorQuantidadeValores = qtdValores;
-				}
-				writer.write("" + (i+1));
-				if(i != qtdEvolucoes-1) {
-					writer.write("" + delimitador);
-				}
-			}
-			writer.write("\n");
+				//int i = 0;
+				int maiorQuantidadeValores = evolucoes.quantidadeValores(0);
+				
+				int qtdEvolucoes = evolucoes.quantidadeEvolucoes();
 			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			try {
-			for (int j=0; j<maiorQuantidadeValores; j++) {
 				for (int i=0; i<qtdEvolucoes; i++) {
-					Object valor = evolucoes.getValor(i, j);
-					if(valor == null) {
-						writer.write("   ");
+					int qtdValores = evolucoes.quantidadeValores(i);
+					if(qtdValores > maiorQuantidadeValores) {
+						maiorQuantidadeValores = qtdValores;
 					}
-					else {
-						writer.write("" + valor);
-					}
+					writer.write("" + (i+1));
 					if(i != qtdEvolucoes-1) {
 						writer.write("" + delimitador);
 					}
 				}
 				writer.write("\n");
+			
+			
+				for (int j=0; j<maiorQuantidadeValores; j++) {
+					for (int i=0; i<qtdEvolucoes; i++) {
+						Object valor = evolucoes.getValor(i, j);
+						if(valor == null) {
+							writer.write("   ");
+						}
+						else {
+							writer.write("" + valor);
+						}
+						if(i != qtdEvolucoes-1) {
+							writer.write("" + delimitador);
+						}
+					}
+					writer.write("\n");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 			
 		}
 		
@@ -103,22 +96,12 @@ public class EscritorArquivo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//writer.writeln(caminhoCompleto);
-//		File myObj = new File(caminhoCompleto);
-//		Scanner myReader = new Scanner(myObj);
-//		
-//	    while (myReader.hasNextLine()) {
-//	    	String data = myReader.nextLine();
-//	    	if(data.charAt(0) == '-') {
-//	    		evolucoes.adicionarEvolucao();
-//	    	}
-//	    	else {
-//	    		evolucoes.adicionarValor(parser.toNumber(data));
-//	    	}
-//	    	//writer.writeln(data);
-//	    }
-//	    myReader.close();
-//	    return evolucoes.quantidadeEvolucoes();
+
 	}
 	
 }
+
+
+
+
+

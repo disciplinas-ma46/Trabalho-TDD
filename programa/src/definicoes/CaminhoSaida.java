@@ -62,8 +62,9 @@ public class CaminhoSaida {
 		if(path.charAt(path.length()-1) != '\\') {
 			path = path + "\\";
 		}
+		
+		caminhoSaida = path;
 		path = path + ".placeholder";
-		counter += 1;
 		
 		Path pathToFile = Paths.get(path);
 		File nfile = new File(path);
@@ -78,49 +79,9 @@ public class CaminhoSaida {
 			e.printStackTrace();
 			return false;
 		}
-		
+	
 		return true;
-//		return file.isDirectory();
-		
-//		if(!file.isDirectory()) {
-//			return false;
-//		}
-//		
-//		if(file.exists())
-		
-		// falsificação
-		//caminhoSaida = ".\\" + path + "\\";
-		
-//		String novoCaminho = ""+path;
-//		if(path.charAt(path.length()-1) != '\\') {
-//			novoCaminho = novoCaminho + "\\";
-//		}
 
-		
-//		return true;
-//		System.out.println(path.split("\\")[0]);
-//		File f = new File(".\\" + path + "\\placeholder.out");
-//		boolean b = f.canWrite();
-//		if(b) {
-//			caminhoSaida = ".\\" + path + "\\";
-//			return b;
-//		}
-//		File a = new File(path);
-//		b = a.canWrite();
-//		if(b) {
-//			return b;
-//		}
-//		return false;
-		
-//		if(b
-//		return f.canWrite();
-//		return Files.isWritable(path);
-//	    try {
-//	        Paths.get(path);
-//	    } catch (InvalidPathException | NullPointerException ex) {
-//	        return false;
-//	    }
-//	    return true;
 	}
 	
 }

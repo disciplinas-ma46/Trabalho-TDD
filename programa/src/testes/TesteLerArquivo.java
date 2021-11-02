@@ -7,31 +7,29 @@ import org.junit.Test;
 import estruturaEvolucoes.EvolucoesMemory;
 import estruturaEvolucoes.EvolucoesTime;
 import exceptions.ArquivoNaoEncontradoException;
-import main.LeitorArquivo;
+import main.Menu;
 
 public class TesteLerArquivo {
 	EvolucoesMemory memories = new EvolucoesMemory();
 	EvolucoesTime times = new EvolucoesTime();
+	Menu menu = new Menu();
 	
 	@Test
 	public void abrirAnalysisMemory() throws ArquivoNaoEncontradoException {
-		LeitorArquivo leitor = new LeitorArquivo();
-		assertEquals(21, leitor.lerArquivo(memories));
+		assertEquals(21, menu.lerArquivo(memories));
 		//memories.Show();
 	}
 	
 	@Test
 	public void abrirAnalysisTime() throws ArquivoNaoEncontradoException {
-		LeitorArquivo leitor = new LeitorArquivo();
-		assertEquals(21, leitor.lerArquivo(times));
+		assertEquals(21, menu.lerArquivo(times));
 		//times.Show();
 	}
 
 	@Test(expected = ArquivoNaoEncontradoException.class)
 	public void abrirDesconhecido() throws ArquivoNaoEncontradoException {
-		LeitorArquivo leitor = new LeitorArquivo();
 		memories.setNomeEntrada("ArquivoQualquer.out");
-		assertEquals(21, leitor.lerArquivo(memories));
+		assertEquals(21, menu.lerArquivo(memories));
 	}
 
 }
