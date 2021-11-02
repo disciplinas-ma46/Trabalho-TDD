@@ -19,12 +19,12 @@ public class Menu {
 	EvolucoesTime times = new EvolucoesTime();
 	
 	Definicoes definicoes = new Definicoes();
-	
+	Persistencia persistencia = new Persistencia();
 	
 	public boolean run() {
 		try {
-			lerArquivo(memories);
-			lerArquivo(times);
+			persistencia.lerArquivo(memories);
+			persistencia.lerArquivo(times);
 		}
 		catch(ArquivoNaoEncontradoException e) {
 			System.out.println(e.getMessage());
@@ -43,53 +43,12 @@ public class Menu {
 
 		definicoes.definirFormatoSaida();
 		
-		escreverArquivo(memories);
-		
-		escreverArquivo(times);
+		persistencia.escreverArquivo(this, memories);
+		persistencia.escreverArquivo(this, times);
 		
 		System.out.println("Finalizado");
 		
 		return true;
-	}
-	
-	public int lerArquivo(Evolucoes evolucoes) throws ArquivoNaoEncontradoException{
-		final String CAMINHO_PADRAO = "ide\\";
-		Parser parser = new ParserInt();
-		
-		String nomeArquivo = evolucoes.getNomeEntrada();
-		
-		if (evolucoes.getClass() == EvolucoesMemory.class) {
-			parser = new ParserDouble();
-		}
-		
-		try {
-			String caminhoCompleto = CAMINHO_PADRAO + nomeArquivo;
-			//System.out.println(caminhoCompleto);
-			File myObj = new File(caminhoCompleto);
-			Scanner myReader = new Scanner(myObj);
-			
-		    while (myReader.hasNextLine()) {
-		    	String data = myReader.nextLine();
-		    	if(data.charAt(0) == '-') {
-		    		evolucoes.adicionarEvolucao();
-		    	}
-		    	else {
-		    		evolucoes.adicionarValor(parser.toNumber(data));
-		    	}
-		    	//System.out.println(data);
-		    }
-		    myReader.close();
-		    return evolucoes.quantidadeEvolucoes();
-		} catch (FileNotFoundException e) {
-			//System.out.println("An error occurred.");
-		    //e.printStackTrace();
-			throw new ArquivoNaoEncontradoException("Arquivo " + nomeArquivo + " não encontrado");
-		}
-	}
-	
-	public void escreverArquivo(Evolucoes evolucoes) {
-		new EscreverArquivo(this, evolucoes).compute();
-
 	}
 	
 }
