@@ -7,3 +7,5 @@ Matrícula: 16/0035481
 
 Para executar o programa, abra o projeto 'programa' no Eclipse e rode `Programa.java` do pacote main da página src
 
+Para rodar a suite de testes execute AllTests.java em programa/testes
+

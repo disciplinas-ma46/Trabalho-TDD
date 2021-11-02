@@ -55,7 +55,7 @@ public class CaminhoSaida {
 			}
 		}
 		
-		System.out.println("final: " + path);
+		System.out.println("> Caminho escolhido: " + file.getAbsolutePath() + "\n");
 //		System.out.println("padrão: " + caminhoSaida);
 		
 		
@@ -67,6 +67,7 @@ public class CaminhoSaida {
 		path = path + ".placeholder";
 		
 		Path pathToFile = Paths.get(path);
+		
 		File nfile = new File(path);
 		if(nfile.exists()) {
 			return true;
