@@ -10,7 +10,7 @@ public class Delimitador {
 	private final char[] escapes = {'\b','\f','\n','\r','\t','\'','\"','\\'};
 	private char delimitador = ';';
 	
-	public char getDelimitador() {
+	char getDelimitador() {
 		return delimitador;
 	}
 	
@@ -31,7 +31,7 @@ public class Delimitador {
 		throw new DelimitadorInvalidoException("Caractere '" + caractere + "' inválido!");
 	}
 	
-	public void definir() {
+	void definir() {
 		boolean valido = false;
 		while (!valido) {
 			String caractere = Uteis.Input("Digite o caractere delimitador: ");

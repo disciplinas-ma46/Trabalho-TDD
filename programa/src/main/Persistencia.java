@@ -1,47 +1,23 @@
 package main;
 
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
-import estruturaEvolucoes.*;
+import estruturaEvolucoes.Evolucoes;
+import estruturaEvolucoes.EvolucoesMemory;
 import exceptions.ArquivoNaoEncontradoException;
+
+public class Persistencia {
 	
-//public LeitorArquivoMemoria
-
-class Parser {
-	// para dar Override
-	public Object toNumber(String value) {
-		return new Object();
-	}
-}
-
-class ParserInt extends Parser{
-	@Override
-	public Object toNumber(String value) {
-		return (Integer) Integer.parseInt(value);
-	}
-}
-
-class ParserDouble extends Parser{
-	@Override
-	public Object toNumber(String value) {
-		return (Double) Double.parseDouble(value);
-	}
-}
-
-public class LeitorArquivo {
-	
-	private final String CAMINHO_PADRAO = "ide\\";
-	private Parser parser;
-	
-	public int lerArquivo(String nomeArquivo, Evolucoes evolucoes) throws ArquivoNaoEncontradoException {
+	public int lerArquivo(Evolucoes evolucoes) throws ArquivoNaoEncontradoException{
+		final String CAMINHO_PADRAO = "ide\\";
+		Parser parser = new ParserInt();
+		
+		String nomeArquivo = evolucoes.getNomeEntrada();
 		
 		if (evolucoes.getClass() == EvolucoesMemory.class) {
 			parser = new ParserDouble();
-		}
-		else if(evolucoes.getClass() == EvolucoesTime.class) {
-			parser = new ParserInt();
 		}
 		
 		try {
@@ -67,6 +43,11 @@ public class LeitorArquivo {
 		    //e.printStackTrace();
 			throw new ArquivoNaoEncontradoException("Arquivo " + nomeArquivo + " não encontrado");
 		}
+	}
+	
+	public void escreverArquivo(Menu menu, Evolucoes evolucoes) {
+		new EscreverArquivo(menu, evolucoes).compute();
+
 	}
 	
 }

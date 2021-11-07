@@ -1,8 +1,10 @@
 package definicoes;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -12,13 +14,15 @@ import main.Uteis;
 
 public class CaminhoSaida {
 	
+	static int counter = 1;
+	
 	private String caminhoSaida = ".\\saida\\";
 	
-	public String getCaminhoSaida() {
+	String getCaminhoSaida() {
 		return caminhoSaida;
 	}
 	
-	public void definir() throws EscritaNaoPermitidaException{
+	void definir() throws EscritaNaoPermitidaException{
 		boolean valido = false;
 		while (!valido) {
 			caminhoSaida = Uteis.Input("Digite caminho da saída: ");
@@ -33,33 +37,52 @@ public class CaminhoSaida {
 		}
 	}
 	
-	private boolean isValidPath(String path) {
-		// falsificação
-		caminhoSaida = ".\\" + path + "\\";
-		return true;
-//		System.out.println(path.split("\\")[0]);
-//		File f = new File(".\\" + path + "\\placeholder.out");
-//		boolean b = f.canWrite();
-//		if(b) {
-//			caminhoSaida = ".\\" + path + "\\";
-//			return b;
-//		}
-//		File a = new File(path);
-//		b = a.canWrite();
-//		if(b) {
-//			return b;
-//		}
-//		return false;
+	public boolean isValidPath(String path) {
+		File file = new File(path);
 		
-//		if(b
-//		return f.canWrite();
-//		return Files.isWritable(path);
-//	    try {
-//	        Paths.get(path);
-//	    } catch (InvalidPathException | NullPointerException ex) {
-//	        return false;
-//	    }
-//	    return true;
+		if(file.isFile()) {
+			return false;
+		}
+		
+		String[] parts = path.split("\\\\");
+		
+		if(!parts[0].equals(".")) {
+			if(parts[0].equals("")) {
+				path = "." + path;
+			}
+			else {
+				path = ".\\" + path;
+			}
+		}
+		
+		System.out.println("> Caminho escolhido: " + file.getAbsolutePath() + "\n");
+//		System.out.println("padrão: " + caminhoSaida);
+		
+		
+		if(path.charAt(path.length()-1) != '\\') {
+			path = path + "\\";
+		}
+		
+		caminhoSaida = path;
+		path = path + ".placeholder";
+		
+		Path pathToFile = Paths.get(path);
+		
+		File nfile = new File(path);
+		if(nfile.exists()) {
+			return true;
+		}
+		try {
+			Files.createDirectories(pathToFile.getParent());
+			Files.createFile(pathToFile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	
+		return true;
+
 	}
 	
 }

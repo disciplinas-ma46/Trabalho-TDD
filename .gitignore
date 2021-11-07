@@ -1,4 +1,7 @@
 *.out
+*\saida
+.placeholder*
+*\caminho*
 
 # Compiled class file
 *.class
